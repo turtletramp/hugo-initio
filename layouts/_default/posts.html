@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main id="main">
+
+	<div class="container">
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+				<!-- list the pages with their headers -->
+				<table>
+					<tr style="border-bottom: 1px solid #ddd;">
+						<th>Date</th>
+						<th style="padding-left: 10px">Title</th>
+					</tr>
+					{{ range .Paginator.Pages }}
+					<tr style="border-bottom: 1px solid #ddd;">
+						<th>
+							<a href="{{ .Permalink }}" rel="bookmark">{{ .Date.Format "January 2, 2006" }}</a>
+						</th>
+						<th style="padding-left: 10px">
+							<a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a>
+						</th>
+					</tr>
+					{{ end }}
+				</table>
+			</div>
+		</div>
+
+		<center class="">
+			<ul class="pagination">
+        {{ template "_internal/pagination.html" . }}
+			</ul>
+		</center>
+	</div>	<!-- /container -->
+
+</main>
+{{ end }}
